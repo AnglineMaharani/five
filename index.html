@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You, As Always</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body class="container">
+  <section class="intro" id="intro" aria-label="Pembuka hadiah">
+    <div class="intro-flower" aria-hidden="true">✿</div>
+    <p class="intro-eyebrow">a little gift, made with love</p>
+    <h1>For You, As Always kak</h1>
+    <p class="intro-subtitle">Ada sesuatu yang kecil, tapi ku berikan dengan senang hati </p>
+    <button id="seeFlowerBtn" class="see-button" type="button">Lihat</button>
+  </section>
+  <button id="musicBtn" class="music-button" type="button" hidden>♫ Putar Musik</button>
+  <audio id="bgMusic" loop preload="none">
+    <source src="music/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Tombol Notes: ikon saja -->
+<button
+  id="notesBtn"
+  class="notes-icon-button"
+  type="button"
+  aria-label="Buka Notes"
+  title="Buka Notes"
+  hidden
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M6 3.75h12a1.25 1.25 0 0 1 1.25 1.25v14A1.25 1.25 0 0 1 18 20.25H6A1.25 1.25 0 0 1 4.75 19V5A1.25 1.25 0 0 1 6 3.75Z"/>
+    <path d="M8 3.75v16.5M11 8h5M11 11.5h5M11 15h3"/>
+  </svg>
+</button>
+
+<!-- Isi surat Notes -->
+<div id="notesModal" class="notes-modal" hidden>
+  <div
+    class="notes-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="notesTitle"
+  >
+    <button
+      id="closeNotesBtn"
+      class="notes-close"
+      type="button"
+      aria-label="Tutup Notes"
+    >×</button>
+
+    <div class="notes-decoration" aria-hidden="true">✿</div>
+
+    <h2 id="notesTitle">somewhere between the rain and the yellow flowers</h2>
+    <p class="notes-subtitle">Inspired by “Chemtrails Over the Country Club” — Lana Del Rey</p>
+
+    <div id="notesMessage" class="notes-message">
+      <p>
+      Dear Kak Putri,
+
+First of all, maaf ya, bunganya telat dari yang seharusnya. Ku terlalu lama memikirkan konsep dan kalimat yang tepat, mencoba mencari sesuatu yang bukan hanya indah untuk dilihat, but something that could hold a little meaning, too. Ternyata, memikirkan bagaimana menyampaikan sesuatu terkadang lebih sulit daripada sekadar mengatakannya. "eh susah dua-duanya sih hehe"
+
+Ku memilih bunga kuning dengan latar hujan dan langit malam karena ku suka bagaimana keduanya terasa berbeda, tetapi tetap indah ketika disatukan. Hujan membawa suasana yang sendu, sementara bunga kuning memberikan sedikit kehangatan di tengahnya.
+
+Somehow, the atmosphere of Chemtrails Over the Country Club reminded me of this little creation. Ada sesuatu yang terasa dreamy, tenang, dan sedikit melankolis dari lagu itu, seperti kenangan kecil yang ingin disimpan lebih lama. Dan ku ingin bunga ini memiliki perasaan yang serupa "sederhana, sedikit sendu, tetapi tetap menyimpan kehangatan".
+
+Ku tidak pandai menjelaskan kenapa hal-hal kecil terkadang bisa terasa begitu berarti. Mungkin karena tidak semua perhatian harus datang dalam bentuk sesuatu yang besar, dan tidak semua rasa sayang harus selalu diucapkan secara langsung. Terkadang, cukup dengan mengingat sesuatu, meluangkan sedikit waktu, atau membuat sesuatu dengan seseorang dalam pikiran, sudah ada banyak hal yang sebenarnya ingin disampaikan.
+
+Jadi, anggap saja bunga ini sebagai salah satu hal kecil itu. Tidak perlu mencari makna yang terlalu jauh di baliknya. Ku hanya berharap, di antara banyak hal yang Kak Putri temui setiap harinya, bunga ini bisa menjadi satu hal sederhana yang membuat Kak Putri tersenyum.
+
+Kalau suatu hari hujan terasa lebih lama dari biasanya, semoga masih ada sesuatu yang mengingatkan Kak Putri bahwa hari yang mendung pun tidak sepenuhnya kehilangan keindahannya. And if the days ever get a little too heavy, I hope you’ll always find little reasons to smile, even when you don't feel like looking for them.
+
+Sekali lagi, maaf ya, Kak, karena bunganya terlambat. Ku hanya ingin semuanya terasa pas dengan cerita dan suasana yang ingin kusampaikan. But I guess some things take a little longer when you want to put your thoughts into something meaningful.
+
+Anyway, here's a little piece of yellow for your rainy days. Semoga Kak Putri selalu menemukan kehangatan dalam hal-hal sederhana, bertemu dengan banyak ketulusan, dan tidak pernah kehabisan alasan untuk tersenyum, sekecil apa pun alasannya.
+
+Take care of yourself, Kak. And don't forget to leave a little room for happiness, even on the quietest days. ♡
+
+"Kak, sekali lagi. Saya sayang sama kak putri dan terima kasih untuk rasa aman dan nyaman ini".
+
+— from orang keren :D</p>
+    </div>
+
+    <button
+      id="closeNotesBottom"
+      class="notes-done"
+      type="button"
+    >Tutup ♡</button>
+  </div>
+</div>
+
+  <!-- Animasi bunga dan hujan -->
+  <div class="night"></div>
+  <div class="flowers">
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+        <div class="flower__line__leaf flower__line__leaf--5"></div>
+        <div class="flower__line__leaf flower__line__leaf--6"></div>
+      </div>
+    </div>
+
+    <div class="flower flower--2">
+      <div class="flower__leafs flower__leafs--2">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <div class="flower flower--3">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+    <div class="flower flower--4">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:1.2s">
+      <div class="flower__g-long">
+        <div class="flower__g-long__top"></div>
+        <div class="flower__g-long__bottom"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--1">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--2">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.4s">
+      <div class="flower__g-right flower__g-right--1">
+        <div class="leaf"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-right flower__g-right--2">
+        <div class="leaf"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-front">
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__line"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:3.2s">
+      <div class="flower__g-fr">
+        <div class="leaf"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--0">
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:2.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--1">
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.8s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--2">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--3">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--4">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--5">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--6">
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.4s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.6s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.8s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--7">
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.5s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Efek hujan menggantikan animasi love -->
+  <div class="rain" aria-hidden="true">
+    <span class="raindrop" style="left:4%; animation-delay:-6.06s; animation-duration:1.14s; height:26px; opacity:0.34;"></span>
+    <span class="raindrop" style="left:40%; animation-delay:-2.08s; animation-duration:1.35s; height:14px; opacity:0.37;"></span>
+    <span class="raindrop" style="left:75%; animation-delay:-5.44s; animation-duration:1.13s; height:25px; opacity:0.6;"></span>
+    <span class="raindrop" style="left:12%; animation-delay:-3.38s; animation-duration:0.67s; height:20px; opacity:0.41;"></span>
+    <span class="raindrop" style="left:54%; animation-delay:-6.56s; animation-duration:0.74s; height:28px; opacity:0.72;"></span>
+    <span class="raindrop" style="left:9%; animation-delay:-0.14s; animation-duration:1.41s; height:13px; opacity:0.6;"></span>
+    <span class="raindrop" style="left:41%; animation-delay:-5.32s; animation-duration:0.8s; height:24px; opacity:0.41;"></span>
+    <span class="raindrop" style="left:83%; animation-delay:-1.03s; animation-duration:1.41s; height:28px; opacity:0.32;"></span>
+    <span class="raindrop" style="left:4%; animation-delay:-2.66s; animation-duration:0.8s; height:13px; opacity:0.42;"></span>
+    <span class="raindrop" style="left:34%; animation-delay:-4.64s; animation-duration:0.85s; height:21px; opacity:0.51;"></span>
+    <span class="raindrop" style="left:83%; animation-delay:-4.82s; animation-duration:1.39s; height:17px; opacity:0.4;"></span>
+    <span class="raindrop" style="left:18%; animation-delay:-4.82s; animation-duration:0.67s; height:28px; opacity:0.47;"></span>
+    <span class="raindrop" style="left:65%; animation-delay:-0.81s; animation-duration:0.99s; height:14px; opacity:0.75;"></span>
+    <span class="raindrop" style="left:92%; animation-delay:-7.21s; animation-duration:1.27s; height:13px; opacity:0.71;"></span>
+    <span class="raindrop" style="left:24%; animation-delay:-3.9s; animation-duration:0.97s; height:15px; opacity:0.48;"></span>
+    <span class="raindrop" style="left:61%; animation-delay:-6.63s; animation-duration:1.09s; height:23px; opacity:0.34;"></span>
+    <span class="raindrop" style="left:3%; animation-delay:-2.96s; animation-duration:1.0s; height:14px; opacity:0.52;"></span>
+    <span class="raindrop" style="left:54%; animation-delay:-1.77s; animation-duration:1.24s; height:15px; opacity:0.28;"></span>
+    <span class="raindrop" style="left:79%; animation-delay:-7.02s; animation-duration:0.77s; height:26px; opacity:0.27;"></span>
+    <span class="raindrop" style="left:6%; animation-delay:-4.01s; animation-duration:1.07s; height:21px; opacity:0.75;"></span>
+    <span class="raindrop" style="left:63%; animation-delay:-1.13s; animation-duration:1.03s; height:14px; opacity:0.57;"></span>
+    <span class="raindrop" style="left:88%; animation-delay:-0.36s; animation-duration:0.74s; height:20px; opacity:0.72;"></span>
+    <span class="raindrop" style="left:14%; animation-delay:-6.51s; animation-duration:0.93s; height:14px; opacity:0.42;"></span>
+    <span class="raindrop" style="left:56%; animation-delay:-2.97s; animation-duration:1.13s; height:20px; opacity:0.34;"></span>
+    <span class="raindrop" style="left:90%; animation-delay:-0.26s; animation-duration:0.93s; height:15px; opacity:0.75;"></span>
+    <span class="raindrop" style="left:42%; animation-delay:-5.96s; animation-duration:1.34s; height:17px; opacity:0.26;"></span>
+    <span class="raindrop" style="left:86%; animation-delay:-7.22s; animation-duration:1.03s; height:18px; opacity:0.45;"></span>
+    <span class="raindrop" style="left:2%; animation-delay:-2.12s; animation-duration:1.39s; height:17px; opacity:0.27;"></span>
+    <span class="raindrop" style="left:48%; animation-delay:-1.27s; animation-duration:1.15s; height:18px; opacity:0.35;"></span>
+    <span class="raindrop" style="left:88%; animation-delay:-2.92s; animation-duration:0.69s; height:25px; opacity:0.48;"></span>
+    <span class="raindrop" style="left:17%; animation-delay:-0.89s; animation-duration:0.74s; height:14px; opacity:0.72;"></span>
+    <span class="raindrop" style="left:65%; animation-delay:-6.74s; animation-duration:1.36s; height:22px; opacity:0.28;"></span>
+    <span class="raindrop" style="left:99%; animation-delay:-6.73s; animation-duration:0.87s; height:27px; opacity:0.6;"></span>
+    <span class="raindrop" style="left:29%; animation-delay:-1.87s; animation-duration:0.65s; height:26px; opacity:0.67;"></span>
+    <span class="raindrop" style="left:65%; animation-delay:-4.46s; animation-duration:0.99s; height:23px; opacity:0.42;"></span>
+    <span class="raindrop" style="left:17%; animation-delay:-7.93s; animation-duration:0.95s; height:15px; opacity:0.34;"></span>
+    <span class="raindrop" style="left:57%; animation-delay:-0.36s; animation-duration:1.15s; height:23px; opacity:0.39;"></span>
+    <span class="raindrop" style="left:85%; animation-delay:-5.9s; animation-duration:0.86s; height:28px; opacity:0.33;"></span>
+    <span class="raindrop" style="left:31%; animation-delay:-3.92s; animation-duration:1.21s; height:16px; opacity:0.74;"></span>
+    <span class="raindrop" style="left:49%; animation-delay:-4.01s; animation-duration:0.92s; height:14px; opacity:0.44;"></span>
+    <span class="raindrop" style="left:0%; animation-delay:-3.79s; animation-duration:1.22s; height:14px; opacity:0.28;"></span>
+    <span class="raindrop" style="left:29%; animation-delay:-5.29s; animation-duration:0.69s; height:28px; opacity:0.73;"></span>
+    <span class="raindrop" style="left:58%; animation-delay:-6.43s; animation-duration:0.94s; height:12px; opacity:0.51;"></span>
+    <span class="raindrop" style="left:15%; animation-delay:-1.87s; animation-duration:0.74s; height:28px; opacity:0.59;"></span>
+    <span class="raindrop" style="left:53%; animation-delay:-2.94s; animation-duration:0.7s; height:14px; opacity:0.71;"></span>
+    <span class="raindrop" style="left:73%; animation-delay:-3.96s; animation-duration:1.4s; height:25px; opacity:0.54;"></span>
+    <span class="raindrop" style="left:18%; animation-delay:-2.08s; animation-duration:0.92s; height:13px; opacity:0.7;"></span>
+    <span class="raindrop" style="left:64%; animation-delay:-3.9s; animation-duration:1.41s; height:21px; opacity:0.25;"></span>
+    <span class="raindrop" style="left:83%; animation-delay:-7.54s; animation-duration:1.39s; height:21px; opacity:0.69;"></span>
+    <span class="raindrop" style="left:23%; animation-delay:-7.1s; animation-duration:1.38s; height:22px; opacity:0.71;"></span>
+    <span class="raindrop" style="left:55%; animation-delay:-4.19s; animation-duration:0.98s; height:23px; opacity:0.32;"></span>
+    <span class="raindrop" style="left:99%; animation-delay:-5.55s; animation-duration:1.08s; height:23px; opacity:0.7;"></span>
+    <span class="raindrop" style="left:38%; animation-delay:-0.4s; animation-duration:1.06s; height:18px; opacity:0.3;"></span>
+    <span class="raindrop" style="left:68%; animation-delay:-1.99s; animation-duration:1.09s; height:26px; opacity:0.27;"></span>
+    <span class="raindrop" style="left:5%; animation-delay:-1.44s; animation-duration:0.74s; height:27px; opacity:0.41;"></span>
+    <span class="raindrop" style="left:40%; animation-delay:-3.96s; animation-duration:0.71s; height:22px; opacity:0.35;"></span>
+    <span class="raindrop" style="left:76%; animation-delay:-0.68s; animation-duration:1.12s; height:26px; opacity:0.47;"></span>
+    <span class="raindrop" style="left:26%; animation-delay:-7.61s; animation-duration:1.2s; height:26px; opacity:0.43;"></span>
+    <span class="raindrop" style="left:55%; animation-delay:-2.5s; animation-duration:1.4s; height:15px; opacity:0.33;"></span>
+    <span class="raindrop" style="left:97%; animation-delay:-1.97s; animation-duration:0.71s; height:27px; opacity:0.65;"></span>
+    <span class="raindrop" style="left:28%; animation-delay:-2.96s; animation-duration:0.67s; height:17px; opacity:0.54;"></span>
+    <span class="raindrop" style="left:66%; animation-delay:-3.7s; animation-duration:1.12s; height:18px; opacity:0.72;"></span>
+    <span class="raindrop" style="left:4%; animation-delay:-2.09s; animation-duration:1.01s; height:17px; opacity:0.64;"></span>
+    <span class="raindrop" style="left:52%; animation-delay:-0.66s; animation-duration:1.1s; height:25px; opacity:0.38;"></span>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
